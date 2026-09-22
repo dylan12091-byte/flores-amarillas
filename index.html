@@ -205,11 +205,11 @@
         <p>Te amo mucho y sé que aunque no sea físico, espero que te guste.</p>
     </div>
 
-    <!-- Música de fondo (Floricienta) -->
-    <audio id="musica" src="https://mboxdrive.com" loop></audio>
+    <!-- Música de fondo protegida -->
+    <audio id="musica" src="https://mboxdrive.com" loop preload="auto"></audio>
 
     <script>
-        // Generar fondo de estrellas estáticas
+        // Generar fondo de estrellas estáticas de inmediato
         const starsBg = document.getElementById('stars-bg');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -226,9 +226,11 @@
             document.getElementById('card-inicio').style.display = 'none';
             document.getElementById('carta-amor').style.display = 'block';
 
-            // Activar música de fondo
+            // Activar música de manera segura (con control de error para evitar que bloquee el código)
             const audio = document.getElementById('musica');
-            audio.play().catch(e => console.log("Audio activado"));
+            audio.play().catch(function(error) {
+                console.log("El navegador bloqueó el inicio automático del sonido, pero el universo sigue:");
+            });
 
             const contenedor = document.getElementById('container-efectos');
 
@@ -239,7 +241,6 @@
                 const delay = Math.random() * 2;
 
                 if (randomChoice < 0.4) {
-                    // 1. Crear Flor Amarilla
                     const flor = document.createElement('div');
                     flor.classList.add('flower');
                     flor.style.left = xPos;
@@ -259,7 +260,6 @@
                     setTimeout(() => flor.remove(), 7000);
 
                 } else if (randomChoice < 0.7) {
-                    // 2. Crear Corazón Flotante
                     const corazon = document.createElement('div');
                     corazon.classList.add('heart');
                     corazon.innerHTML = '❤️';
@@ -269,13 +269,13 @@
                     setTimeout(() => corazon.remove(), 6000);
 
                 } else {
-                    // 3. Crear Destello Mágico
                     const brillo = document.createElement('div');
                     brillo.classList.add('sparkle');
                     brillo.innerHTML = '✨';
                     brillo.style.left = xPos;
                     brillo.style.animationDelay = delay + 's';
                     contenedor.appendChild(brillo);
-                    setTimeout(() => brillo.remove(), 5000);
-                }
 
+
+              
+         
