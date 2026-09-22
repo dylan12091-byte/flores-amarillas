@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
         body {
-            background: radial-gradient(circle, #0d1b2a, #010811);
+            background: radial-gradient(circle, #0c1a2b, #01060d);
             overflow: hidden;
             height: 100vh;
             display: flex;
@@ -20,7 +20,7 @@
             font-family: 'Arial', sans-serif;
             position: relative;
         }
-        /* Estrellas de fondo (Universo) */
+        /* Universo de estrellas fijas */
         .stars {
             position: absolute;
             width: 100%;
@@ -39,24 +39,24 @@
             0%, 100% { opacity: 0.3; }
             50% { opacity: 1; }
         }
-        /* Contenedor de Interfaz */
+        /* Interfaz de usuario */
         .interface-card {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.06);
             padding: 35px 30px;
             border-radius: 20px;
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             text-align: center;
             z-index: 10;
             color: white;
             max-width: 420px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
         h1 {
             font-size: 1.8rem;
             color: #ffd700;
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
         p {
             font-size: 1.1rem;
@@ -73,13 +73,12 @@
             border-radius: 25px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
         }
         .btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.6);
+            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
         }
-        /* Carta con el mensaje final oculto */
         #carta-amor {
             display: none;
             opacity: 0;
@@ -87,13 +86,10 @@
             animation: mostrarCarta 0.8s forwards ease-out;
         }
         @keyframes mostrarCarta {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            to { opacity: 1; transform: scale(1); }
         }
-        /* Contenedor de efectos flotantes */
-        #container-efectos {
+        /* Contenedor Cósmico Botánico */
+        #universe-container {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -102,85 +98,49 @@
             z-index: 5;
             pointer-events: none;
         }
-        /* Renderizado de la flor */
-        .flower {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            animation: flotarEfecto 7s forwards linear;
-        }
-        .center {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background: #4a2c00;
-            border-radius: 50%;
-            top: 28px;
-            left: 28px;
-            z-index: 2;
-            box-shadow: inset 0 0 5px #000;
-        }
-        .petals {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .petal {
-            position: absolute;
-            width: 12px;
-            height: 32px;
-            background: #ffd700;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            top: 4px;
-            left: 34px;
-            transform-origin: bottom center;
-            box-shadow: 0 0 4px rgba(255, 165, 0, 0.5);
-        }
-        /* Rotaciones de pétalos */
-        .petal:nth-child(1) { transform: rotate(0deg); }
-        .petal:nth-child(2) { transform: rotate(30deg); }
-        .petal:nth-child(3) { transform: rotate(60deg); }
-        .petal:nth-child(4) { transform: rotate(90deg); }
-        .petal:nth-child(5) { transform: rotate(120deg); }
-        .petal:nth-child(6) { transform: rotate(150deg); }
-        .petal:nth-child(7) { transform: rotate(180deg); }
-        .petal:nth-child(8) { transform: rotate(210deg); }
-        .petal:nth-child(9) { transform: rotate(240deg); }
-        .petal:nth-child(10) { transform: rotate(270deg); }
-        .petal:nth-child(11) { transform: rotate(300deg); }
-        .petal:nth-child(12) { transform: rotate(330deg); }
 
-        /* Estilos para los Corazones y Brillos adicionales */
-        .heart {
+        /* --- TIPOS DE FLORES (CSS ART) --- */
+        .botanic-item {
             position: absolute;
-            font-size: 24px;
-            color: #ff3366;
-            filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.6));
-            animation: flotarEfecto 6s forwards linear;
-        }
-        .sparkle {
-            position: absolute;
-            font-size: 18px;
-            color: #ffeb3b;
-            filter: drop-shadow(0 0 10px #ffeb3b);
-            animation: flotarEfecto 5s forwards linear;
+            animation: floatUp 8s forwards linear;
         }
 
-        /* Animación unificada para flotar hacia arriba con balanceo */
-        @keyframes flotarEfecto {
+        /* 1. Girasol */
+        .girasol { width: 70px; height: 70px; }
+        .girasol .center { position: absolute; width: 22px; height: 22px; background: #3d2203; border-radius: 50%; top: 24px; left: 24px; z-index: 2; }
+        .girasol .petal { position: absolute; width: 10px; height: 28px; background: #ffd700; border-radius: 50% 50% 40% 40%; top: 0; left: 30px; transform-origin: bottom center; }
+
+        /* 2. Margarita Amarilla (Pétalos delgados y alargados) */
+        .margarita { width: 65px; height: 65px; }
+        .margarita .center { position: absolute; width: 16px; height: 16px; background: #f39c12; border-radius: 50%; top: 24px; left: 24px; z-index: 2; }
+        .margarita .petal { position: absolute; width: 6px; height: 26px; background: #fff200; border-radius: 30%; top: 2px; left: 29px; transform-origin: bottom center; }
+
+        /* 3. Tulipán Amarillo */
+        .tulipan { width: 40px; height: 50px; }
+        .tulipan .petal-back { position: absolute; width: 34px; height: 44px; background: #f1c40f; border-radius: 40% 40% 50% 50%; left: 3px; }
+        .tulipan .petal-main { position: absolute; width: 26px; height: 40px; background: #ffcc00; border-radius: 50% 50% 40% 40%; left: 7px; top: 4px; box-shadow: inset 4px 0 5px rgba(0,0,0,0.1); }
+
+        /* 4. Flor de Loto Estelar (Capas concéntricas) */
+        .loto { width: 60px; height: 60px; }
+        .loto .center { position: absolute; width: 14px; height: 14px; background: #d4ac0d; border-radius: 50%; top: 23px; left: 23px; z-index: 2; }
+        .loto .petal { position: absolute; width: 14px; height: 24px; background: #ffea00; border-radius: 50% 50% 0 0; top: 4px; left: 23px; transform-origin: bottom center; }
+
+        /* Hojas verdes cósmicas y pétalos sueltos */
+        .leaf { position: absolute; width: 15px; height: 25px; background: #27ae60; border-radius: 0 100% 0 100%; transform: rotate(45deg); }
+        .loose-petal { position: absolute; width: 10px; height: 22px; background: #ffeb3b; border-radius: 50% 50% 0 0; }
+        .heart { position: absolute; font-size: 20px; color: #ff3366; }
+        .sparkle { position: absolute; font-size: 16px; color: #fff; text-shadow: 0 0 8px #ffd700; }
+
+        /* Animación de subida flotante con rotación tridimensional */
+        @keyframes floatUp {
             0% {
-                transform: translateY(105vh) translateX(0) scale(0.3) rotate(0deg);
+                transform: translateY(105vh) translateX(0) scale(0.4) rotate(0deg);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
             100% {
-                transform: translateY(-15vh) translateX(100px) scale(0.9) rotate(360deg);
+                transform: translateY(-15vh) translateX(80px) scale(0.9) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -189,23 +149,21 @@
 <body>
 
     <div class="stars" id="stars-bg"></div>
-    <div id="container-efectos"></div>
+    <div id="universe-container"></div>
 
-    <!-- Pantalla de inicio personalizada -->
     <div class="interface-card" id="card-inicio">
         <h1>Para mi gordis ✨</h1>
         <p>Presiona el botón para abrir tu regalo virtual.</p>
-        <button class="btn" onclick="crearUniverso()">Abrir Universo 🌻</button>
+        <button class="btn" onclick="crearGranUniverso()">Abrir Universo 🌻</button>
     </div>
 
-    <!-- Carta con tu mensaje dedicado -->
     <div class="interface-card" id="carta-amor">
         <h1>Para alguien muy especial 💛</h1>
         <p>Te amo mucho y sé que aunque no sea físico, espero que te guste.</p>
     </div>
 
     <script>
-        // Generar fondo de estrellas estáticas de inmediato
+        // Generar fondo estrellado
         const starsBg = document.getElementById('stars-bg');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -217,59 +175,73 @@
             starsBg.appendChild(star);
         }
 
-        function crearUniverso() {
-            // Cambiar de tarjeta de inmediato sin bloqueos de audio
+        // Función para armar los pétalos radiales de los tipos de flor redondos
+        function buildPetals(flowerDiv, count) {
+            const petalsContainer = document.createElement('div');
+            petalsContainer.style.position = 'absolute';
+            petalsContainer.style.width = '100%';
+            petalsContainer.style.height = '100%';
+            const angleStep = 360 / count;
+            for (let i = 0; i < count; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                petal.style.transform = `rotate(${i * angleStep}deg)`;
+                petalsContainer.appendChild(petal);
+            }
+            flowerDiv.appendChild(petalsContainer);
+        }
+
+        function crearGranUniverso() {
             document.getElementById('card-inicio').style.display = 'none';
             document.getElementById('carta-amor').style.display = 'block';
 
-            const contenedor = document.getElementById('container-efectos');
+            const contenedor = document.getElementById('universe-container');
 
-            // Generador continuo de elementos flotantes
+            // Generador de lluvia botánica inversa masiva
             setInterval(() => {
-                const randomChoice = Math.random();
-                const xPos = Math.random() * 100 + 'vw';
-                const delay = Math.random() * 2;
+                const xPos = Math.random() * 95 + 'vw';
+                const duration = Math.random() * 4 + 6; // Entre 6s y 10s de viaje espacial
+                const item = document.createElement('div');
+                item.classList.add('botanic-item');
+                item.style.left = xPos;
+                item.style.animationDuration = duration + 's';
 
-                if (randomChoice < 0.4) {
-                    const flor = document.createElement('div');
-                    flor.classList.add('flower');
-                    flor.style.left = xPos;
-                    flor.style.animationDelay = delay + 's';
-                    flor.innerHTML = `
-                        <div class="center"></div>
-                        <div class="petals">
-                            <div class="petal"></div><div class="petal"></div>
-                            <div class="petal"></div><div class="petal"></div>
-                            <div class="petal"></div><div class="petal"></div>
-                            <div class="petal"></div><div class="petal"></div>
-                            <div class="petal"></div><div class="petal"></div>
-                            <div class="petal"></div><div class="petal"></div>
-                        </div>
-                    `;
-                    contenedor.appendChild(flor);
-                    setTimeout(() => flor.remove(), 7000);
+                const tipo = Math.random();
 
-                } else if (randomChoice < 0.7) {
-                    const corazon = document.createElement('div');
-                    corazon.classList.add('heart');
-                    corazon.innerHTML = '❤️';
-                    corazon.style.left = xPos;
-                    corazon.style.animationDelay = delay + 's';
-                    contenedor.appendChild(corazon);
-                    setTimeout(() => corazon.remove(), 6000);
-
-                } else {
-                    const brillo = document.createElement('div');
-                    brillo.classList.add('sparkle');
-                    brillo.innerHTML = '✨';
-                    brillo.style.left = xPos;
-                    brillo.style.animationDelay = delay + 's';
-                    contenedor.appendChild(brillo);
-                    setTimeout(() => brillo.remove(), 5000);
+                if (tipo < 0.20) {
+                    // 1. Girasol Clásico
+                    item.classList.add('girasol');
+                    item.innerHTML = '<div class="center"></div>';
+                    buildPetals(item, 12);
+                } 
+                else if (tipo < 0.40) {
+                    // 2. Margarita Dorada
+                    item.classList.add('margarita');
+                    item.innerHTML = '<div class="center"></div>';
+                    buildPetals(item, 16);
+                } 
+                else if (tipo < 0.55) {
+                    // 3. Tulipán Elegante
+                    item.classList.add('tulipan');
+                    item.innerHTML = '<div class="petal-back"></div><div class="petal-main"></div>';
+                } 
+                else if (tipo < 0.70) {
+                    // 4. Loto Estelar Mágico
+                    item.classList.add('loto');
+                    item.innerHTML = '<div class="center"></div>';
+                    buildPetals(item, 8);
                 }
-
-            }, 200);
-        }
-    </script>
-</body>
-</html>
+                else if (tipo < 0.80) {
+                    // 5. Hojas verdes cósmicas
+                    item.classList.add('leaf');
+                }
+                else if (tipo < 0.90) {
+                    // 6. Pétalos sueltos dorados
+                    item.classList.add('loose-petal');
+                }
+                else if (tipo < 0.95) {
+                    // 7. Corazones flotantes
+                    item.classList.add('heart');
+                    item.innerHTML = '❤️';
+                }
+                else {
