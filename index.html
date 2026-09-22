@@ -39,7 +39,7 @@
             0%, 100% { opacity: 0.3; }
             50% { opacity: 1; }
         }
-        /* Interfaz de usuario */
+        /* Interfaz de usuario inicial */
         .interface-card {
             background: rgba(255, 255, 255, 0.06);
             padding: 35px 30px;
@@ -51,6 +51,7 @@
             color: white;
             max-width: 420px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
         h1 {
             font-size: 1.8rem;
@@ -79,16 +80,8 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5);
         }
-        #carta-amor {
-            display: none;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: mostrarCarta 0.8s forwards ease-out;
-        }
-        @keyframes mostrarCarta {
-            to { opacity: 1; transform: scale(1); }
-        }
-        /* Contenedor Cósmico Botánico */
+        
+        /* Contenedor Cósmico completo */
         #universe-container {
             position: absolute;
             width: 100%;
@@ -99,50 +92,69 @@
             pointer-events: none;
         }
 
-        /* --- TIPOS DE FLORES (CSS ART) --- */
-        .botanic-item {
+        /* --- ELEMENTOS DEL UNIVERSO FLOTANTE --- */
+        .botanic-group {
             position: absolute;
-            animation: floatUp 8s forwards linear;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: floatInSpace 9s forwards linear;
+        }
+
+        /* Burbuja de Texto de Amor */
+        .flower-msg {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            white-space: nowrap;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         /* 1. Girasol */
-        .girasol { width: 70px; height: 70px; }
-        .girasol .center { position: absolute; width: 22px; height: 22px; background: #3d2203; border-radius: 50%; top: 24px; left: 24px; z-index: 2; }
-        .girasol .petal { position: absolute; width: 10px; height: 28px; background: #ffd700; border-radius: 50% 50% 40% 40%; top: 0; left: 30px; transform-origin: bottom center; }
+        .girasol { width: 60px; height: 60px; position: relative; }
+        .girasol .center { position: absolute; width: 18px; height: 18px; background: #3d2203; border-radius: 50%; top: 21px; left: 21px; z-index: 2; }
+        .girasol .petal { position: absolute; width: 8px; height: 24px; background: #ffd700; border-radius: 50% 50% 40% 40%; top: 0; left: 26px; transform-origin: bottom center; }
 
-        /* 2. Margarita Amarilla (Pétalos delgados y alargados) */
-        .margarita { width: 65px; height: 65px; }
-        .margarita .center { position: absolute; width: 16px; height: 16px; background: #f39c12; border-radius: 50%; top: 24px; left: 24px; z-index: 2; }
-        .margarita .petal { position: absolute; width: 6px; height: 26px; background: #fff200; border-radius: 30%; top: 2px; left: 29px; transform-origin: bottom center; }
+        /* 2. Margarita Amarilla */
+        .margarita { width: 55px; height: 55px; position: relative; }
+        .margarita .center { position: absolute; width: 14px; height: 14px; background: #f39c12; border-radius: 50%; top: 20px; left: 20px; z-index: 2; }
+        .margarita .petal { position: absolute; width: 5px; height: 22px; background: #fff200; border-radius: 30%; top: 2px; left: 25px; transform-origin: bottom center; }
 
-        /* 3. Tulipán Amarillo */
-        .tulipan { width: 40px; height: 50px; }
-        .tulipan .petal-back { position: absolute; width: 34px; height: 44px; background: #f1c40f; border-radius: 40% 40% 50% 50%; left: 3px; }
-        .tulipan .petal-main { position: absolute; width: 26px; height: 40px; background: #ffcc00; border-radius: 50% 50% 40% 40%; left: 7px; top: 4px; box-shadow: inset 4px 0 5px rgba(0,0,0,0.1); }
+        /* Decoraciones sueltas */
+        .heart { position: absolute; font-size: 20px; color: #ff3366; animation: pureFloat 6s forwards linear; }
+        .sparkle { position: absolute; font-size: 16px; color: #fff; text-shadow: 0 0 8px #ffd700; animation: pureFloat 5s forwards linear; }
 
-        /* 4. Flor de Loto Estelar (Capas concéntricas) */
-        .loto { width: 60px; height: 60px; }
-        .loto .center { position: absolute; width: 14px; height: 14px; background: #d4ac0d; border-radius: 50%; top: 23px; left: 23px; z-index: 2; }
-        .loto .petal { position: absolute; width: 14px; height: 24px; background: #ffea00; border-radius: 50% 50% 0 0; top: 4px; left: 23px; transform-origin: bottom center; }
-
-        /* Hojas verdes cósmicas y pétalos sueltos */
-        .leaf { position: absolute; width: 15px; height: 25px; background: #27ae60; border-radius: 0 100% 0 100%; transform: rotate(45deg); }
-        .loose-petal { position: absolute; width: 10px; height: 22px; background: #ffeb3b; border-radius: 50% 50% 0 0; }
-        .heart { position: absolute; font-size: 20px; color: #ff3366; }
-        .sparkle { position: absolute; font-size: 16px; color: #fff; text-shadow: 0 0 8px #ffd700; }
-
-        /* Animación de subida flotante con rotación tridimensional */
-        @keyframes floatUp {
+        /* Animación para que las flores viajen por el universo en 360° */
+        @keyframes floatInSpace {
             0% {
-                transform: translateY(105vh) translateX(0) scale(0.4) rotate(0deg);
+                transform: translate(var(--startX), var(--startY)) scale(0.1) rotate(0deg);
                 opacity: 0;
             }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
             100% {
-                transform: translateY(-15vh) translateX(80px) scale(0.9) rotate(360deg);
+                transform: translate(var(--endX), var(--endY)) scale(1.1) rotate(280deg);
                 opacity: 0;
             }
+        }
+
+        /* Animación complementaria simple para brillos/corazones */
+        @keyframes pureFloat {
+            0% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-15vh) translateX(50px) scale(1); opacity: 0; }
         }
     </style>
 </head>
@@ -151,19 +163,31 @@
     <div class="stars" id="stars-bg"></div>
     <div id="universe-container"></div>
 
+    <!-- Carta inicial limpia -->
     <div class="interface-card" id="card-inicio">
         <h1>Para mi gordis ✨</h1>
-        <p>Presiona el botón para abrir tu regalo virtual.</p>
-        <button class="btn" onclick="crearGranUniverso()">Abrir Universo 🌻</button>
-    </div>
-
-    <div class="interface-card" id="carta-amor">
-        <h1>Para alguien muy especial 💛</h1>
-        <p>Te amo mucho y sé que aunque no sea físico, espero que te guste.</p>
+        <p>Te amo mucho y sé que aunque no sea físico, espero que te guste este universo.</p>
+        <button class="btn" onclick="crearUniversoMensajes()">Entrar al Universo 🌻</button>
     </div>
 
     <script>
-        // Generar fondo estrellado
+        // Lista de frases románticas que llevará cada flor amarillas
+        const frasesAmor = [
+            "Te amo mucho ❤️", 
+            "Eres mi gordis linda ✨", 
+            "Mi lugar favorito eres tú 🌻", 
+            "Pensando en ti cada segundo 💭", 
+            "Me haces muy feliz 🥰", 
+            "Un universo entero para ti 🌌", 
+            "Eres única y especial 💛", 
+            "Gracias por existir 👑", 
+            "Te extraño a cada momento 🥺", 
+            "Te adoro con todo mi corazón 🌹", 
+            "Eres mi persona favorita 🧸", 
+            "Siempre tú y yo ♾️"
+        ];
+
+        // Fondo de estrellas
         const starsBg = document.getElementById('stars-bg');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -175,7 +199,7 @@
             starsBg.appendChild(star);
         }
 
-        // Función para armar los pétalos radiales de los tipos de flor redondos
+        // Armar pétalos circulares
         function buildPetals(flowerDiv, count) {
             const petalsContainer = document.createElement('div');
             petalsContainer.style.position = 'absolute';
@@ -191,57 +215,44 @@
             flowerDiv.appendChild(petalsContainer);
         }
 
-        function crearGranUniverso() {
-            document.getElementById('card-inicio').style.display = 'none';
-            document.getElementById('carta-amor').style.display = 'block';
+        function crearUniversoMensajes() {
+            // Desvanecer y quitar por completo la carta para que solo quede el espacio
+            const carta = document.getElementById('card-inicio');
+            carta.style.opacity = '0';
+            carta.style.transform = 'scale(0.5)';
+            setTimeout(() => { carta.style.display = 'none'; }, 800);
 
             const contenedor = document.getElementById('universe-container');
 
-            // Generador de lluvia botánica inversa masiva
+            // Generador de flores y mensajes a su alrededor
             setInterval(() => {
-                const xPos = Math.random() * 95 + 'vw';
-                const duration = Math.random() * 4 + 6; // Entre 6s y 10s de viaje espacial
-                const item = document.createElement('div');
-                item.classList.add('botanic-item');
-                item.style.left = xPos;
-                item.style.animationDuration = duration + 's';
+                const randomChoice = Math.random();
 
-                const tipo = Math.random();
+                if (randomChoice < 0.70) {
+                    // Crear grupo flotante (Mensaje + Flor)
+                    const grupo = document.createElement('div');
+                    grupo.classList.add('botanic-group');
 
-                if (tipo < 0.20) {
-                    // 1. Girasol Clásico
-                    item.classList.add('girasol');
-                    item.innerHTML = '<div class="center"></div>';
-                    buildPetals(item, 12);
-                } 
-                else if (tipo < 0.40) {
-                    // 2. Margarita Dorada
-                    item.classList.add('margarita');
-                    item.innerHTML = '<div class="center"></div>';
-                    buildPetals(item, 16);
-                } 
-                else if (tipo < 0.55) {
-                    // 3. Tulipán Elegante
-                    item.classList.add('tulipan');
-                    item.innerHTML = '<div class="petal-back"></div><div class="petal-main"></div>';
-                } 
-                else if (tipo < 0.70) {
-                    // 4. Loto Estelar Mágico
-                    item.classList.add('loto');
-                    item.innerHTML = '<div class="center"></div>';
-                    buildPetals(item, 8);
-                }
-                else if (tipo < 0.80) {
-                    // 5. Hojas verdes cósmicas
-                    item.classList.add('leaf');
-                }
-                else if (tipo < 0.90) {
-                    // 6. Pétalos sueltos dorados
-                    item.classList.add('loose-petal');
-                }
-                else if (tipo < 0.95) {
-                    // 7. Corazones flotantes
-                    item.classList.add('heart');
-                    item.innerHTML = '❤️';
-                }
-                else {
+                    // Definir coordenadas aleatorias alrededor de la pantalla (Efecto 360)
+                    const startX = Math.random() * 100 + "vw";
+                    const startY = Math.random() * 100 + "vh";
+                    const endX = (Math.random() * 200 - 50) + "vw";
+                    const endY = (Math.random() * 200 - 50) + "vh";
+
+                    grupo.style.setProperty('--startX', startX);
+                    grupo.style.setProperty('--startY', startY);
+                    grupo.style.setProperty('--endX', endX);
+                    grupo.style.setProperty('--endY', endY);
+
+                    // Elegir frase al azar
+                    const fraseRandom = frasesAmor[Math.floor(Math.random() * frasesAmor.length)];
+                    const burbuja = document.createElement('div');
+                    burbuja.classList.add('flower-msg');
+                    burbuja.innerText = fraseRandom;
+                    grupo.appendChild(burbuja);
+
+                    // Elegir tipo de flor al azar (Girasol o Margarita)
+                    const flor = document.createElement('div');
+                    if (Math.random() < 0.5) {
+                        flor.classList.add('girasol');
+                        flor.innerHTML = '<div class="center"></div>';
