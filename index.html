@@ -84,8 +84,7 @@
             display: none;
             opacity: 0;
             transform: scale(0.8);
-            animation: mostrarCarta 1s forwards ease-out;
-            animation-delay: 0.3s;
+            animation: mostrarCarta 0.8s forwards ease-out;
         }
         @keyframes mostrarCarta {
             to {
@@ -185,14 +184,6 @@
                 opacity: 0;
             }
         }
-        /* Ocultar el reproductor de música de fondo */
-        #player-wrapper {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body>
@@ -213,33 +204,7 @@
         <p>Te amo mucho y sé que aunque no sea físico, espero que te guste.</p>
     </div>
 
-    <!-- Contenedor oculto para la música vía YouTube API -->
-    <div id="player-wrapper">
-        <div id="youtube-player"></div>
-    </div>
-
     <script>
-        // Cargar el script de la API de YouTube de forma asíncrona
-        var tag = document.createElement('script');
-        tag.src = "https://youtube.com";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                height: '1',
-                width: '1',
-                videoId: 'uS3vA2SgSok', // ID del tema Flores Amarillas de Floricienta
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'loop': 1,
-                    'playlist': 'uS3vA2SgSok'
-                }
-            });
-        }
-
         // Generar fondo de estrellas estáticas de inmediato
         const starsBg = document.getElementById('stars-bg');
         for (let i = 0; i < 100; i++) {
@@ -253,14 +218,9 @@
         }
 
         function crearUniverso() {
-            // Intercambiar pantallas sin bloqueos
+            // Cambiar de tarjeta de inmediato sin bloqueos de audio
             document.getElementById('card-inicio').style.display = 'none';
             document.getElementById('carta-amor').style.display = 'block';
-
-            // Intentar reproducir la música de YouTube de manera segura
-            if (player && typeof player.playVideo === 'function') {
-                player.playVideo();
-            }
 
             const contenedor = document.getElementById('container-efectos');
 
@@ -287,3 +247,29 @@
                         </div>
                     `;
                     contenedor.appendChild(flor);
+                    setTimeout(() => flor.remove(), 7000);
+
+                } else if (randomChoice < 0.7) {
+                    const corazon = document.createElement('div');
+                    corazon.classList.add('heart');
+                    corazon.innerHTML = '❤️';
+                    corazon.style.left = xPos;
+                    corazon.style.animationDelay = delay + 's';
+                    contenedor.appendChild(corazon);
+                    setTimeout(() => corazon.remove(), 6000);
+
+                } else {
+                    const brillo = document.createElement('div');
+                    brillo.classList.add('sparkle');
+                    brillo.innerHTML = '✨';
+                    brillo.style.left = xPos;
+                    brillo.style.animationDelay = delay + 's';
+                    contenedor.appendChild(brillo);
+                    setTimeout(() => brillo.remove(), 5000);
+                }
+
+            }, 200);
+        }
+    </script>
+</body>
+</html>
